@@ -1,0 +1,54 @@
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+.email {
+  display: block;
+  margin: auto;
+  max-width: 400px;
+}
+
+.email__logo {
+  font-size: 5rem;
+  text-align: center;
+  transform: scale(-1, 1);
+}
+
+.email__title {
+  font-size: 2.25rem;
+  font-weight: 700;
+}
+
+.email__text {
+  font-size: 1rem;
+  font-weight: 100;
+  margin: 2rem 0;
+}
+
+.email__button {
+  font-family: 'Roboto';
+  font-size: 0.75rem;
+  font-weight: 100;
+  display: block;
+  -webkit-appearance: none;
+  margin: 2rem auto;
+  height: 2rem;
+  width: 7rem;
+  border: 1px solid #B0B0B0;
+  border-radius: 1rem;
+  cursor: pointer;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 4px 12px 0 rgba(0, 0, 0, 0.1);
+}
+
+.email__button:focus {
+  outline: none;
+}
+
+.email__button:active {
+  outline: none;
+  box-shadow: none !important;
+}

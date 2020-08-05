@@ -1,0 +1,20 @@
+head
+  link(rel="stylesheet", href="/validate.css", data-inline)
+  link(href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;500;700&display=swap" rel="stylesheet")
+
+body
+  table(style="width:100%;border:0px;border-collapse:collapse;border-spacing:0;background-color:#F7F7F7;font-family:Roboto,Avenir,Helvetica,sans-serif;font-weight:400;height:100%;margin:0px")
+    tbody
+      tr
+        td(style="padding:2rem;")
+          div(style="max-width:512px;margin:0 auto")
+            table(style="padding:1rem 0;background-color:#FFFFFF;border:1px solid #F3F3F3")
+              tbody
+                tr
+                  td(style="padding:1rem 2rem;font-size:2rem;font-weight:500;") Woops, #{username}!
+                tr
+                  td(style="padding:0.5rem 2rem;font-size:1rem;font-weight:100;") It seems you forgot your password, but fear not, you can safely set a new one using this code!
+                tr
+                  td(style="padding:0.5rem 2rem;font-size:1rem;font-weight:100;") If you didn't ask for it you can ignore this email, but it could mean someone is trying to get into your email account, so be wary.
+                tr
+                  td(style="padding:1rem 2rem 2rem 1rem;text-align:center;font-size:2rem;font-weight:500;letter-spacing:5px;") #{code}
