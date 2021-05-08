@@ -1,7 +1,7 @@
 /* EXCEPTION MODEL */
 const Exception = require('../../application/models/exception')
 
-class AuthException extends Error {
+class WeatherException extends Error {
     constructor(exception) {
         super()
         this.message = exception.message || 'Unexpected error'
@@ -15,8 +15,8 @@ class AuthException extends Error {
         const exception = await Exception.findOne({
             $and: [{ prefix }, { code }],
         })
-        return new AuthException(exception)
+        return new WeatherException(exception)
     }
 }
 
-module.exports = AuthException
+module.exports = WeatherException

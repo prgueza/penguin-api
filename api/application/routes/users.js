@@ -1,7 +1,5 @@
 const express = require('express')
 const router = express.Router()
-const CheckAuth = require('../../helpers/middleware/check-auth')
-const CheckAdmin = require('../../helpers/middleware/check-admin')
 
 /* CONTROLLER */
 const UsersController = require('../controllers/users.js')
