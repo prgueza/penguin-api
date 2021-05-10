@@ -2,17 +2,17 @@ const mongoose = require('mongoose')
 const WeatherException = require('../../helpers/exceptions/weather')
 
 /* DATA MODELS */
-const Location = require('../models/location.js')
+const Place = require('../models/place.js')
 
 /* GET ALL */
-exports.locationsReadAll = async (req, res) => {
+exports.placesReadAll = async (req, res) => {
     try {
         const { collection } = req.query
         const query = collection
             ? { collectionId: mongoose.Types.ObjectId(collection) }
             : {}
-        const locations = await Location.find(query).exec()
-        res.status(200).json(locations)
+        const places = await Place.find(query).exec()
+        res.status(200).json(places)
     } catch (error) {
         console.error(error)
         res.status(500).json({ error })
@@ -20,12 +20,12 @@ exports.locationsReadAll = async (req, res) => {
 }
 
 /* GET ONE */
-exports.locationsReadOne = async (req, res) => {
+exports.placesReadOne = async (req, res) => {
     try {
         const { id } = req.params
-        const location = await Location.findById(id).exec()
-        if (!location) throw new Error({ code: 404 })
-        res.status(200).json(location)
+        const place = await Place.findById(id).exec()
+        if (!place) throw new Error({ code: 404 })
+        res.status(200).json(place)
     } catch (error) {
         console.error(error)
         res.status(500).json({ error })
@@ -33,20 +33,26 @@ exports.locationsReadOne = async (req, res) => {
 }
 
 /* CREATE EXCEPTION */
-exports.locationCreate = async (req, res) => {
+exports.placeCreate = async (req, res) => {
     try {
-        const { collectionId, code, name } = req.body
-        const existingLocation = await Location.findOne({
+        const { collectionId, code, name, county, countyCode } = req.body
+        const existingPlace = await Place.findOne({
             $and: [
                 { collectionId: mongoose.Types.ObjectId(collectionId) },
                 { code },
             ],
         })
-        if (existingLocation) throw await WeatherException.init('WL-10')
-        const location = new Location({ collectionId, code, name })
-        await location.save()
+        if (existingPlace) throw await WeatherException.init('WL-10')
+        const place = new Place({
+            collectionId,
+            code,
+            name,
+            county,
+            countyCode,
+        })
+        await place.save()
         res.status(201).json({
-            location,
+            place,
             success: true,
             action: 'create',
         })
@@ -57,10 +63,10 @@ exports.locationCreate = async (req, res) => {
 }
 
 /* UPDATE EXCEPTION */
-exports.locationUpdate = async (req, res) => {
+exports.placeUpdate = async (req, res) => {
     try {
         const { id } = req.params
-        const resource = await Location.findByIdAndUpdate(
+        const resource = await Place.findByIdAndUpdate(
             { _id: id },
             { $set: req.body },
             { new: true }
@@ -77,10 +83,10 @@ exports.locationUpdate = async (req, res) => {
 }
 
 /* DELETE EXCEPTION */
-exports.locationDelete = async (req, res) => {
+exports.placeDelete = async (req, res) => {
     try {
         const { id } = req.params
-        const resource = await Location.findByIdAndDelete(id)
+        const resource = await Place.findByIdAndDelete(id)
         res.status(200).json({
             resource,
             success: true,

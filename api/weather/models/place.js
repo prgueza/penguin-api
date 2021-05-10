@@ -1,9 +1,11 @@
 const mongoose = require('mongoose')
 
-const LocationSchema = mongoose.Schema(
+const PlaceSchema = mongoose.Schema(
     {
         name: { type: String, trim: true },
         code: { type: String, required: true },
+        countyCode: { type: String, required: true },
+        county: { type: String, required: true },
         collectionId: { type: mongoose.ObjectId },
     },
     {
@@ -12,12 +14,12 @@ const LocationSchema = mongoose.Schema(
     }
 )
 
-LocationSchema.virtual('url').get(function() {
-    return `${process.env.BASE_URL}weather/locations/${this._id}`
+PlaceSchema.virtual('url').get(function() {
+    return `${process.env.BASE_URL}weather/places/${this._id}`
 })
 
-LocationSchema.set('toJSON', { getters: true, versionKey: false })
+PlaceSchema.set('toJSON', { getters: true, versionKey: false })
 
 module.exports = mongoose.connection
     .useDb('weather')
-    .model('location', LocationSchema)
+    .model('place', PlaceSchema)

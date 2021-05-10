@@ -13,6 +13,7 @@ router.get('/:id', CheckAuth, CollectionsController.collectionsReadOne)
 router.post('/', CheckAuth, CollectionsController.collectionCreate)
 //
 // /* API UPDATE */
+router.put('/', CheckAuth, CollectionsController.collectionUpdateMany)
 router.put('/:id', CheckAuth, CollectionsController.collectionUpdate)
 //
 // /* API DELETE */

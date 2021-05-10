@@ -1,4 +1,4 @@
 const collectionsRoutes = require('./routes/collections.js')
-const locationsRoutes = require('./routes/locations.js')
+const placesRoutes = require('./routes/places.js')
 
-module.exports = [collectionsRoutes, locationsRoutes]
+module.exports = [collectionsRoutes, placesRoutes]
