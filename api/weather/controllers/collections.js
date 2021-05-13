@@ -59,12 +59,12 @@ exports.collectionCreate = async (req, res) => {
         if (places && places.length) {
             for (const place of places) {
                 try {
-                    const { name, county, code, countyCode } = place
+                    const { name, county, code, countycode } = place
                     const placeDoc = new Place({
                         name,
                         code,
                         county,
-                        countyCode,
+                        countycode,
                         collectionId: collection._id,
                     })
                     await placeDoc.save()

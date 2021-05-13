@@ -35,7 +35,7 @@ exports.placesReadOne = async (req, res) => {
 /* CREATE EXCEPTION */
 exports.placeCreate = async (req, res) => {
     try {
-        const { collectionId, code, name, county, countyCode } = req.body
+        const { collectionId, code, name, county, countycode } = req.body
         const existingPlace = await Place.findOne({
             $and: [
                 { collectionId: mongoose.Types.ObjectId(collectionId) },
@@ -48,7 +48,7 @@ exports.placeCreate = async (req, res) => {
             code,
             name,
             county,
-            countyCode,
+            countycode,
         })
         await place.save()
         res.status(201).json({

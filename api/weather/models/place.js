@@ -4,7 +4,7 @@ const PlaceSchema = mongoose.Schema(
     {
         name: { type: String, trim: true },
         code: { type: String, required: true },
-        countyCode: { type: String, required: true },
+        countycode: { type: String, required: true },
         county: { type: String, required: true },
         collectionId: { type: mongoose.ObjectId },
     },
